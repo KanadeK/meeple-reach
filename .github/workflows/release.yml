@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags: ["v0.1.0"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: mkdir -p dist/release
+      - run: npm pack --pack-destination dist/release
+      - name: Package browser demo
+        run: zip -r "../release/meeple-reach-demo-${GITHUB_REF_NAME}.zip" .
+        working-directory: dist/site
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/release/* --verify-tag --title "MeepleReach $GITHUB_REF_NAME" --notes-file docs/release/v0.1.0.md

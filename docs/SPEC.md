@@ -51,7 +51,7 @@ Required records:
 - Component: `id`, `label`, `widthCm`, `heightCm`, `currentSlotId`, `allowedSlotIds`, `movable`.
 - Interaction: `playerId`, `componentId`, `usesPerRound`.
 
-Identifiers must be non-empty ASCII slugs. Dimensions, reach, and frequency must be finite and positive; anchor coordinates may be zero. Rectangles must remain inside the table. References must resolve. A component must fit every allowed slot, its current slot must be allowed, and two components cannot share a current slot. Unknown object keys are rejected so misspellings fail at the input boundary.
+Identifiers must be non-empty ASCII slugs. Dimensions, reach, and frequency must be finite and positive; anchor coordinates may be zero. Rectangles must remain inside the table. References must resolve. A component must fit every allowed slot, its current slot must be allowed, and two components cannot share a current slot. A player/component interaction pair appears once and carries its total frequency. Unknown object keys are rejected so misspellings fail at the input boundary.
 
 Candidate slots may overlap because they can represent mutually exclusive alternatives. A complete assignment is feasible only when component footprints do not overlap.
 
@@ -118,4 +118,3 @@ Exit codes:
 - Package: ESM, zero runtime dependencies.
 - Browser demo: current evergreen browsers with ES modules.
 - Scenario and plan documents carry integer schema version `1`.
-

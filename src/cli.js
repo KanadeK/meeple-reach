@@ -113,16 +113,18 @@ async function readScenario(inputPath) {
 
 async function outputDirectory(outputPath, force) {
   const resolved = path.resolve(outputPath);
-  let exists = false;
+  let information = null;
   try {
-    await stat(resolved);
-    exists = true;
+    information = await stat(resolved);
   } catch (error) {
     if (error.code !== "ENOENT") {
       throw error;
     }
   }
-  if (exists && !force) {
+  if (information && !information.isDirectory()) {
+    throw new CliError(`Output path is not a directory: ${resolved}`);
+  }
+  if (information && !force) {
     throw new CliError(`Output already exists: ${resolved}. Use --force to overwrite artifacts.`);
   }
   await mkdir(resolved, { recursive: true });

@@ -11,8 +11,10 @@
     "bin",
     "src",
     "samples",
+    "docs",
     "README.md",
     "README.zh-CN.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "scripts": {

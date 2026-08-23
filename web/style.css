@@ -30,17 +30,30 @@ button:focus-visible, a:focus-visible, textarea:focus-visible {
 }
 
 .skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.skip-link:focus {
   position: fixed;
   z-index: 10;
   top: 8px;
   left: 8px;
+  width: auto;
+  height: auto;
   padding: 10px 14px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   color: #fff;
   background: #000;
-  transform: translateY(-150%);
 }
-
-.skip-link:focus { transform: none; }
 
 .hero {
   padding: 22px max(24px, calc((100vw - 1440px) / 2));
@@ -84,6 +97,8 @@ nav { justify-content: space-between; }
   align-items: end;
   padding: clamp(70px, 11vw, 160px) 0 36px;
 }
+
+.hero-grid > * { min-width: 0; }
 
 .eyebrow, .step {
   margin: 0 0 10px;
@@ -219,7 +234,7 @@ footer p { margin: 0; }
 @media (max-width: 580px) {
   .hero { padding-inline: 18px; }
   .hero-grid { padding-top: 64px; }
-  h1 { font-size: clamp(3rem, 17vw, 5rem); }
+  h1 { font-size: clamp(2.8rem, 14vw, 4.5rem); }
   .editor-panel, .result-panel { padding: 24px 16px; }
   .actions { align-items: stretch; flex-direction: column; }
   .metrics { grid-template-columns: repeat(2, 1fr); }

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -60,6 +60,17 @@ test("distinguishes search-limit and impossible failures", async () => {
   const impossible = run("plan", impossiblePath, "--out", path.join(temporaryRoot, "impossible"));
   assert.equal(impossible.status, 5);
   assert.match(impossible.stderr, /No collision-free assignment exists/);
+});
+
+test("treats a forced non-directory output as a boundary error", async () => {
+  const temporaryRoot = await mkdtemp(path.join(tmpdir(), "meeple-reach-output-"));
+  const outputFile = path.join(temporaryRoot, "not-a-directory");
+  await writeFile(outputFile, "occupied", "utf8");
+
+  const result = run("plan", samplePath, "--out", outputFile, "--force");
+
+  assert.equal(result.status, 2);
+  assert.match(result.stderr, /Output path is not a directory/);
 });
 
 test("prints version and concise usage", () => {
