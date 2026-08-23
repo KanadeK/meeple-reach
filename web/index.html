@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audit and optimize tabletop component layouts using participant-provided reach measurements.">
+  <title>MeepleReach · tabletop reach planner</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to planner</a>
+  <header class="hero">
+    <nav aria-label="Project">
+      <a class="brand" href="./" aria-label="MeepleReach home">
+        <span class="brand-mark" aria-hidden="true">MR</span>
+        <span>MeepleReach</span>
+      </a>
+      <a class="text-link" href="./sample.json">Example JSON</a>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Local · exact · inspectable</p>
+        <h1>Put every shared piece within comfortable reach.</h1>
+      </div>
+      <p class="lede">Describe a table, fixed player anchors, measured reach preferences, components, and candidate slots. MeepleReach audits the current setup and searches every feasible discrete layout.</p>
+    </div>
+  </header>
+
+  <main id="workspace" class="workspace">
+    <section class="editor-panel" aria-labelledby="input-title">
+      <div class="section-heading">
+        <div>
+          <p class="step">01 / Scenario</p>
+          <h2 id="input-title">Measured layout</h2>
+        </div>
+        <button id="sample-button" class="quiet-button" type="button">Reset example</button>
+      </div>
+      <label for="scenario-input">Scenario JSON</label>
+      <textarea id="scenario-input" spellcheck="false" aria-describedby="input-help"></textarea>
+      <p id="input-help" class="help">Centimetres, fixed player anchors, and self-reported comfortable reach only. This is not medical or legal certification.</p>
+      <div class="actions">
+        <button id="audit-button" class="secondary-button" type="button">Audit current layout</button>
+        <button id="plan-button" class="primary-button" type="button">Find exact layout <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="result-panel" aria-labelledby="result-title">
+      <div class="section-heading">
+        <div>
+          <p class="step">02 / Result</p>
+          <h2 id="result-title">Reach evidence</h2>
+        </div>
+        <span id="proof-badge" class="proof-badge">Awaiting input</span>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">Load the example, audit its current setup, then ask the exact planner to move the components.</p>
+      <div class="metrics" aria-label="Reach metrics">
+        <div><strong id="blocked-value">—</strong><span>blocked pairs</span></div>
+        <div><strong id="overreach-value">—</strong><span>weighted overreach cm</span></div>
+        <div><strong id="moves-value">—</strong><span>components moved</span></div>
+        <div><strong id="nodes-value">—</strong><span>search nodes</span></div>
+      </div>
+      <div id="layout" class="layout-placeholder">
+        <p>The planned table will appear here as an accessible SVG.</p>
+      </div>
+      <div class="method-note">
+        <p class="step">Objective order</p>
+        <p>Blocked interactions → frequency-weighted overreach → moved pieces → movement distance → canonical tie-break.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>MeepleReach runs entirely in this browser. No scenario is uploaded.</p>
+  </footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

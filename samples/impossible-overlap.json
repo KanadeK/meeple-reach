@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "name": "Overlapping fixed components",
+  "table": { "widthCm": 60, "heightCm": 40 },
+  "players": [
+    {
+      "id": "player",
+      "label": "Player",
+      "anchor": { "xCm": 30, "yCm": 0 },
+      "comfortableReachCm": 40
+    }
+  ],
+  "slots": [
+    {
+      "id": "first",
+      "label": "First",
+      "rect": { "xCm": 20, "yCm": 15, "widthCm": 12, "heightCm": 10 }
+    },
+    {
+      "id": "second",
+      "label": "Second",
+      "rect": { "xCm": 25, "yCm": 15, "widthCm": 12, "heightCm": 10 }
+    }
+  ],
+  "components": [
+    {
+      "id": "first-deck",
+      "label": "First deck",
+      "widthCm": 10,
+      "heightCm": 8,
+      "currentSlotId": "first",
+      "allowedSlotIds": ["first"],
+      "movable": false
+    },
+    {
+      "id": "second-deck",
+      "label": "Second deck",
+      "widthCm": 10,
+      "heightCm": 8,
+      "currentSlotId": "second",
+      "allowedSlotIds": ["second"],
+      "movable": false
+    }
+  ],
+  "interactions": [
+    { "playerId": "player", "componentId": "first-deck", "usesPerRound": 1 },
+    { "playerId": "player", "componentId": "second-deck", "usesPerRound": 1 }
+  ]
+}

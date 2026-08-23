@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "name": "Invalid reference example",
+  "table": { "widthCm": 60, "heightCm": 40 },
+  "players": [
+    {
+      "id": "player",
+      "label": "Player",
+      "anchor": { "xCm": 30, "yCm": 0 },
+      "comfortableReachCm": 40
+    }
+  ],
+  "slots": [
+    {
+      "id": "supply",
+      "label": "Supply",
+      "rect": { "xCm": 24, "yCm": 15, "widthCm": 12, "heightCm": 10 }
+    }
+  ],
+  "components": [
+    {
+      "id": "deck",
+      "label": "Deck",
+      "widthCm": 10,
+      "heightCm": 8,
+      "currentSlotId": "supply",
+      "allowedSlotIds": ["supply"],
+      "movable": false
+    }
+  ],
+  "interactions": [
+    { "playerId": "missing-player", "componentId": "deck", "usesPerRound": 1 }
+  ]
+}

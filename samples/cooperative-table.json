@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "name": "Four-player cooperative table",
+  "table": {
+    "widthCm": 120,
+    "heightCm": 80
+  },
+  "players": [
+    {
+      "id": "north",
+      "label": "North player",
+      "anchor": { "xCm": 60, "yCm": 0 },
+      "comfortableReachCm": 42
+    },
+    {
+      "id": "south",
+      "label": "South player",
+      "anchor": { "xCm": 60, "yCm": 80 },
+      "comfortableReachCm": 42
+    },
+    {
+      "id": "west",
+      "label": "West player",
+      "anchor": { "xCm": 0, "yCm": 40 },
+      "comfortableReachCm": 42
+    },
+    {
+      "id": "east",
+      "label": "East player",
+      "anchor": { "xCm": 120, "yCm": 40 },
+      "comfortableReachCm": 42
+    }
+  ],
+  "slots": [
+    {
+      "id": "north-supply",
+      "label": "North supply",
+      "rect": { "xCm": 52, "yCm": 12, "widthCm": 16, "heightCm": 12 }
+    },
+    {
+      "id": "south-supply",
+      "label": "South supply",
+      "rect": { "xCm": 52, "yCm": 56, "widthCm": 16, "heightCm": 12 }
+    },
+    {
+      "id": "west-supply",
+      "label": "West supply",
+      "rect": { "xCm": 14, "yCm": 34, "widthCm": 16, "heightCm": 12 }
+    },
+    {
+      "id": "east-supply",
+      "label": "East supply",
+      "rect": { "xCm": 90, "yCm": 34, "widthCm": 16, "heightCm": 12 }
+    }
+  ],
+  "components": [
+    {
+      "id": "quest-deck",
+      "label": "Quest deck",
+      "widthCm": 14,
+      "heightCm": 10,
+      "currentSlotId": "south-supply",
+      "allowedSlotIds": ["north-supply", "south-supply", "west-supply", "east-supply"],
+      "movable": true
+    },
+    {
+      "id": "score-pad",
+      "label": "Score pad",
+      "widthCm": 14,
+      "heightCm": 10,
+      "currentSlotId": "north-supply",
+      "allowedSlotIds": ["north-supply", "south-supply", "west-supply", "east-supply"],
+      "movable": true
+    },
+    {
+      "id": "token-tray",
+      "label": "Token tray",
+      "widthCm": 14,
+      "heightCm": 10,
+      "currentSlotId": "east-supply",
+      "allowedSlotIds": ["north-supply", "south-supply", "west-supply", "east-supply"],
+      "movable": true
+    },
+    {
+      "id": "dice-tower",
+      "label": "Dice tower",
+      "widthCm": 14,
+      "heightCm": 10,
+      "currentSlotId": "west-supply",
+      "allowedSlotIds": ["north-supply", "south-supply", "west-supply", "east-supply"],
+      "movable": true
+    }
+  ],
+  "interactions": [
+    { "playerId": "north", "componentId": "quest-deck", "usesPerRound": 8 },
+    { "playerId": "south", "componentId": "score-pad", "usesPerRound": 4 },
+    { "playerId": "west", "componentId": "token-tray", "usesPerRound": 10 },
+    { "playerId": "east", "componentId": "dice-tower", "usesPerRound": 6 }
+  ]
+}
