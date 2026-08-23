@@ -37,10 +37,10 @@ Gate: every documented acceptance command passes from a clean checkout.
 
 ## Phase 5 — Public release
 
-- [ ] Create and push the public repository.
-- [ ] Verify remote CI and Pages deployment.
-- [ ] Create annotated `v0.1.0`, GitHub Release, package and demo assets.
-- [ ] Verify repository, assets, release notes, and contributor identity.
-- [ ] Send completion email through Gmail.
+- [x] Create and push the public repository.
+- [x] Verify remote CI and Pages deployment.
+- [x] Create annotated `v0.1.0`, GitHub Release, package and demo assets.
+- [x] Verify repository, assets, release notes, and contributor identity.
+- [x] Send completion email through Gmail.
 
 Gate: links and commands in the notification have been verified remotely.
