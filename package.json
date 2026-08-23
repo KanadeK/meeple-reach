@@ -1,0 +1,42 @@
+{
+  "name": "meeple-reach",
+  "version": "0.1.0",
+  "description": "Audit and optimize tabletop component layouts for measured reach comfort.",
+  "type": "module",
+  "exports": "./src/index.js",
+  "bin": {
+    "meeple-reach": "./bin/meeple-reach.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "samples",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "build:site": "node scripts/build-site.js",
+    "check": "node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanadeK/meeple-reach.git"
+  },
+  "homepage": "https://kanadek.github.io/meeple-reach/",
+  "bugs": "https://github.com/KanadeK/meeple-reach/issues",
+  "keywords": [
+    "accessibility",
+    "board-games",
+    "tabletop",
+    "layout",
+    "planner"
+  ],
+  "author": "KanadeK",
+  "license": "MIT"
+}
